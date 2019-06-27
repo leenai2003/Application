@@ -1,0 +1,52 @@
+//  I did not use a specific programming language.  There are several though that are in Java constructs.
+//  I also assumed that there are fields that can be used and included in any of the PL's library such as latest update of an RSS feed
+
+
+
+File CompanyList   // This file holds all the companies with no updates and this is the return value of the function CompaniesWithNoUpdates
+
+
+
+File CompaniesWithNoUpdates (Dictionary, NumberOfDays)    //Dictionary is keyed with company and RSSFeedURL
+{
+   while not end of Dictionary
+   {
+      if noUpdates(RSSFeedURL, numberOfDays) AND not(listed(CompanyList, company))
+          add company to the end of CompanyList    //Go to the end of the file CompanyList and add the company
+      if not(noUpdates(RSSFeedURL, numberOfDays) AND listed(CompanyList,company)
+          remove company from CompanyList   //traverse the whole File until company is found and remove it.  May need to organize the file to remove the null line that would result to the removal
+   }
+   PrintCompanyNames(CompanyList);
+}
+
+boolean noUpdates(URL, numOfDays)     // This is a function that determines whether there are RSS feeds within numOfDays or not
+int difference;
+{
+   Difference = currentdate() - RSSUrl.lastupdate()  // I am assuming there is a field that we can use to get the latest date of RSS feed
+   if difference > numOfDays
+      return True
+   else
+      return False;
+}
+
+boolean listed (File companyFile, string companyName)  //This is a function that determines whether the company name is already listed in the file CompanyList
+{
+   string currentCompany;
+   go to the beginning of the file
+   currentCompany=readLine();
+   while not (eof(companyFile)) 
+   {
+      if currentCompany = companyName
+         return True;
+         exit();
+   }
+   return False;
+}
+
+static void PrintCompanyNames(File myFile)
+{
+   go to the beginning of the file;
+   while not eof (MyFile)
+       System.out.println(currentline);
+       go to the next line;
+}
